@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link type="images/png" rel="icon" href="/images/icons8-youtube.png">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css" integrity="sha384-3B6NwesSXE7YJlcLI9RpRqGf2p/EgVH8BgoKTaUrmKNDkHPStTQ3EyoYjCGXaOTS" crossorigin="anonymous" />
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <title>Studio </title>
+</head>
+
+<body>
+<!--    header      -->
+<header class="header">
+  <div class="header_container">
+    <div class="none"></div>
+    <div class="search">
+      <input id="findTitleAndUsername" type="search" placeholder="Search" oninput="FindName(this.value)">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </div>
+    <div class="user">
+      <div class="icon">
+        <i class="fa-solid fa-video" data-toggle="modal" data-target="#modal-create" onclick="showCreate()"></i>
+        <i class="fa-solid fa-bell"></i>
+      </div>
+
+      <div class="img">
+        <img class="profileAvatar" src="/assets/images/logo.png" alt="">
+      </div>
+      <div class="toggle">
+        <i class="fa-solid fa-bars" id="header-toggle"></i>
+      </div>
+    </div>
+    <div id="scroll-container" class="style-scope ytd-feed-filter-chip-bar-renderer"
+         style="touch-action: pan-y; color: white; margin: 10px;";>
+    </div>
+  </div>
+</header>
+
+<!--    header      -->
+<!--    nav      -->
+<!--    nav      -->
+<section class="nav" id="navbar" style="padding-left: 25px;">
+  <nav class="nav_container">
+    <div>
+      <a href="/home" class="nav_link nav_logo ">
+        <i class="fa-solid fa-bars nav_icon"></i>
+        <span class="logo_name">
+               <i class="fab fa-youtube"></i>
+               Youtube
+             </span>
+      </a>
+
+      <div class="nav_list">
+        <div class="nav_items navtop">
+          <a href="/home" class="nav_link navtop active">
+            <i class="fa fa-house nav_icon"></i>
+            <span class="nav_name">Home</span>
+          </a>
+          <a href="/topTrending" class="nav_link navtop">
+            <i class="fa fa-compass nav_icon"></i>
+            <span class="nav_name">Top Trending</span>
+          </a>
+          <a href="/createVideo" class="nav_link navtop" target="_blank">
+            <i class="fa-solid fa-users nav_icon"></i>
+            <span class="nav_name">Channel</span>
+          </a>
+          <a href="#" class="nav_link navtop">
+            <i class="fa-solid fa-thumbs-up nav_icon"></i>
+            <span onclick="renderVideoLiked()" class="nav_name">Like</span>
+          </a>
+
+          <div class="nav_dropdown">
+
+
+            <div class="nav_dropdown-collapse">
+              <div class="nav_dropdown-content">
+                <a href="#" class="nav_dropdown-item">Grid Box</a>
+                <a href="#" class="nav_dropdown-item">Frontend Design</a>
+                <a href="#" class="nav_dropdown-item">Backend Design</a>
+              </div>
+            </div>
+          </div>
+
+          <a href="#" class="nav_link">
+            <i class="fa-solid fa-comment nav_icon"></i>
+            <span class="nav_name">Messages</span>
+          </a>
+        </div>
+
+        <div class="nav_items subscribe-container">
+          <h3 class="nav_subititle">SUBSCRIPTIONS</h3>
+
+          <a href="#" class="nav_link">
+            <img class="subscribe"
+                 src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-people-victoruler-flat-victoruler-5.png"
+                 alt="">
+            <span class="nav_name">GorkCoder</span>
+          </a>
+          <a href="#" class="nav_link">
+            <img class="subscribe"
+                 src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-occupation-and-people-victoruler-flat-victoruler.png"/>
+            <span class="nav_name">React Maste</span>
+          </a>
+          <a href="#" class="nav_link">
+            <img class="subscribe"
+                 src="https://img.icons8.com/external-victoruler-linear-colour-victoruler/64/000000/external-boy-children-avatar-victoruler-linear-colour-victoruler-2.png"/>
+            <span class="nav_name">Backend Development</span>
+          </a>
+          <a href="#" class="nav_link">
+            <img class="subscribe"
+                 src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-children-avatar-victoruler-flat-victoruler-12.png"/>
+            <span class="nav_name">Frontend Development</span>
+          </a>
+
+
+          <div class="nav_dropdown">
+            <a href="#" class="nav_link">
+              <i class="fa-solid fa-chevron-down nav_icon"></i>
+              <span class="nav_name">Show 3 More</span>
+            </a>
+
+            <div class="nav_dropdown-collapse nav_dropdown-second">
+              <div class="nav_dropdown-content">
+                <a href="#" class="nav_dropdown-items">
+                  <img class="subscribe"
+                       src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-children-avatar-victoruler-flat-victoruler-12.png"/>
+                  <span class="nav_name">Frontend Design</span>
+                </a>
+                <a href="#" class="nav_dropdown-items">
+                  <img class="subscribe"
+                       src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-children-avatar-victoruler-flat-victoruler-12.png"/>
+                  <span class="nav_name">Backend Design</span>
+                </a>
+                <a href="#" class="nav_dropdown-items">
+                  <img class="subscribe"
+                       src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-children-avatar-victoruler-flat-victoruler-12.png"/>
+                  <span class="nav_name">Backend Design</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</section>
+<!--    nav      -->
+
+
+<main>
+  <section class="video_content grid" style="margin-left: 100px">
+    <div id="top_trending_list" >
+
+    </div>
+  </section>
+</main>
+
+
+<script src="/js/main.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+  function getTopTrendingVideosLast30Days() {
+    $.ajax({
+      url: '/api/topTrending',
+      method: 'GET',
+      success: function(data) {
+        if (data && data.length > 0) {
+          let videoListHTML = '';
+          data.slice(0, 10).forEach(function(video, index) {
+            const topTrendingLabel = `<span class="top_trending_label">#top ${index + 1} trending</span>`;
+            videoListHTML += `
+                <div class="video_items" style="margin-bottom: 20px; display: flex;width: 1000px">
+            <a href="/singlePages/show?id=${video.id}">
+                <img src="${video.img}" alt="">
+            </a>
+            <div class="details flex" style="margin-left: 20px">
+            <a href="/channelOtherUser?userId=${video.user.id}">
+                <div class="img" >
+                   <img src="${video.user.avatar}"  style=" width: 66px;
+                    height: 43px;" />
+                </div>
+            </a>
+                <div class="heading">
+                    <p>${video.title}</p>
+                    <span>${video.user.username} <i class="fa fa-circle-check"></i> </span>
+                     ${topTrendingLabel}
+                     <div>
+                 <span >${checkDifferenceTime(video.dateSubmit)} | </span>
+                    <span id="viewCount" >${video.viewCount} views </span>
+</div>
+
+                </div>
+
+            </div>
+        </div>`;
+          });
+
+          let topTrendingVideosContainer = document.getElementById("top_trending_list");
+          if (topTrendingVideosContainer) {
+            topTrendingVideosContainer.innerHTML = videoListHTML;
+          }
+        } else {
+          console.log("Không có video thịnh hành trong 30 ngày gần đây.");
+        }
+      },
+      error: function(err) {
+        console.log('Error:', err);
+      }
+    });
+  }
+  $(document).ready(function() {
+    getTopTrendingVideosLast30Days();
+  });
+  function countDownTime(sec) {
+    const rtf1 = new Intl.RelativeTimeFormat('vi', {style: 'short'});
+    let numAbs = Math.abs(sec);
+    if (numAbs < 60)
+      return rtf1.format(sec, 'second');
+    if (numAbs < 3600)
+      return rtf1.format(Math.floor(sec / 60) + 1, 'minute');
+    if (numAbs < 86400)
+      return rtf1.format(Math.floor(sec / 3600) + 1, 'hour');
+    if (numAbs < 604800)
+      return rtf1.format(Math.floor(sec / 86400) + 1, 'day');
+    if (numAbs < 2505600)
+      return rtf1.format(Math.floor(sec / 604800) + 1, 'week');
+    if (numAbs < 31536000)
+      return rtf1.format(Math.floor(sec / 2505600) + 1, 'month');
+    return rtf1.format(Math.floor(sec / 31536000) + 1, 'year');
+  }
+  function checkDifferenceTime(time) {
+    let timeComment = new Date(time);
+    let now = new Date();
+    let diff = (timeComment.getTime() - now.getTime()) / 1000;
+    return countDownTime(Math.floor(diff));
+  }
+</script>
+</body>
+
+</html>

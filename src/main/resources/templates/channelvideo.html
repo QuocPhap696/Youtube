@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link type="images/png" rel="icon" href="/images/icons8-youtube.png">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css" integrity="sha384-3B6NwesSXE7YJlcLI9RpRqGf2p/EgVH8BgoKTaUrmKNDkHPStTQ3EyoYjCGXaOTS" crossorigin="anonymous" />
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <title>Youtube </title>
+</head>
+<body>
+<header class="header">
+  <div class="header_container">
+    <div class="none"> </div>
+    <div class="search">
+      <input id="findTitleAndUsername" type="search" placeholder="Search" oninput="FindName(this.value)">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </div>
+    <div class="user">
+      <div class="icon">
+        <i class="fa-solid fa-video" data-toggle="modal" data-target="#modal-create"  onclick="showCreate()"></i>
+        <i class="fa-solid fa-grip"></i>
+        <i class="fa-solid fa-bell"></i>
+      </div>
+      <div class="img">
+        <img src="/images/logo.png" alt="">
+      </div>
+    </div>
+
+    <div class="toggle">
+      <i class="fa-solid fa-bars" id="header-toggle"></i>
+    </div>
+  </div>
+
+</header>
+<section class="nav" id="navbar">
+  <nav class="nav_container">
+    <div>
+      <a href="#" class="nav_link nav_logo ">
+        <i class="fa-solid fa-bars nav_icon"></i>
+        <span class="logo_name">
+               <i class="fab fa-youtube"></i>
+               Youtube
+             </span>
+      </a>
+
+      <div class="nav_list">
+        <div class="nav_items navtop">
+          <a href="#" class="nav_link navtop active">
+            <i class="fa fa-house nav_icon"></i>
+            <span class="nav_name">Home</span>
+          </a>
+          <a href="#" class="nav_link navtop">
+            <i class="fa fa-compass nav_icon"></i>
+            <span class="nav_name">Explore</span>
+          </a>
+          <a href="#" class="nav_link navtop">
+            <i class="fa-brands fa-tiktok nav_icon"></i>
+            <span class="nav_name">Short Video</span>
+          </a>
+          <a href="#" class="nav_link navtop">
+            <i class="fa-solid fa-users nav_icon"></i>
+            <span class="nav_name">Channel</span>
+          </a>
+          <a href="#" class="nav_link navtop">
+            <i class="fa-solid fa-video nav_icon"></i>
+            <span class="nav_name">Library</span>
+          </a>
+          <a href="#" class="nav_link navtop">
+            <i class="fa-solid fa-clock-rotate-left nav_icon"></i>
+            <span class="nav_name">History</span>
+          </a>
+          <a href="#" class="nav_link navtop">
+            <i class="fa-solid fa-thumbs-up nav_icon"></i>
+            <span class="nav_name">Like</span>
+          </a>
+
+          <div class="nav_dropdown">
+            <a href="#" class="nav_link">
+              <i class="fa-solid fa-chevron-down nav_icon"></i>
+              <span class="nav_name">Show More</span>
+            </a>
+
+            <div class="nav_dropdown-collapse">
+              <div class="nav_dropdown-content">
+                <a href="#" class="nav_dropdown-item">Grid Box</a>
+                <a href="#" class="nav_dropdown-item">Frontend Design</a>
+                <a href="#" class="nav_dropdown-item">Backend Design</a>
+              </div>
+            </div>
+          </div>
+
+          <a href="#" class="nav_link">
+            <i class="fa-solid fa-comment nav_icon"></i>
+            <span class="nav_name">Messages</span>
+          </a>
+        </div>
+
+        <div class="nav_items subscribe-container">
+          <h3 class="nav_subititle">SUBSCRIPTIONS</h3>
+
+          <a href="#" class="nav_link">
+            <img class="subscribe" src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-people-victoruler-flat-victoruler-5.png" alt="">
+            <span class="nav_name">GorkCoder</span>
+          </a>
+          <a href="#" class="nav_link">
+            <img class="subscribe" src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-occupation-and-people-victoruler-flat-victoruler.png">
+            <span class="nav_name">React Maste</span>
+          </a>
+          <a href="#" class="nav_link">
+            <img class="subscribe" src="https://img.icons8.com/external-victoruler-linear-colour-victoruler/64/000000/external-boy-children-avatar-victoruler-linear-colour-victoruler-2.png">
+            <span class="nav_name">Backend Development</span>
+          </a>
+          <a href="#" class="nav_link">
+            <img class="subscribe" src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-children-avatar-victoruler-flat-victoruler-12.png">
+            <span class="nav_name">Frontend Development</span>
+          </a>
+
+          <div class="nav_dropdown">
+            <a href="#" class="nav_link">
+              <i class="fa-solid fa-chevron-down nav_icon"></i>
+              <span class="nav_name">Show 3 More</span>
+            </a>
+
+            <div class="nav_dropdown-collapse nav_dropdown-second">
+              <div class="nav_dropdown-content">
+                <a href="#" class="nav_dropdown-items">
+                  <img class="subscribe" src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-children-avatar-victoruler-flat-victoruler-12.png">
+                  <span class="nav_name">Frontend Design</span>
+                </a>
+                <a href="#" class="nav_dropdown-items">
+                  <img class="subscribe" src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-children-avatar-victoruler-flat-victoruler-12.png">
+                  <span class="nav_name">Backend Design</span>
+                </a>
+                <a href="#" class="nav_dropdown-items">
+                  <img class="subscribe" src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-children-avatar-victoruler-flat-victoruler-12.png">
+                  <span class="nav_name">Backend Design</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</section>
+<!-- Modal create-->
+<div class="modal fade" id="modal-create" data-backdrop="static">
+  <div class="modal-dialog modal-xs">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Add Video</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="" id="create-video" >
+          <div class=" card-body">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="title">Title</label><span class="text-danger">*</span>
+                  <input type="text" name="title" id="title" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="typeVideo">TypeVideo</label><span class="text-danger">*</span>
+                  <input type="text" name="typeVideo" id="typeVideo" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="video">Video</label><span class="text-danger">*</span>
+                  <input type="text" name="video" id="video" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="img">Img</label><span class="text-danger">*</span>
+                  <input type="text" name="img" id="img" class="form-control">
+                </div>
+                <div class = "form-group" id="tag">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button class=" form-submit btn btn-primary">Add</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<script src="/js/main.js" charset="utf-8"></script>
+</body>
+  <script>
+    let tagList=[];
+    $(document).ready(function() {
+      // renderDatas();
+      //submit create và validate
+      $('#create-video').validate({
+        rules: {
+          title: {
+            required: true,
+          },
+          typeVideo: {
+            required: true,
+          },
+          video: {
+            required: true
+          }
+        },
+        messages: {
+          name: {
+            required: "Vui lòng nhập tên sản phẩm"
+          },
+          typeVideo: {
+            required: "Vui lòng nhập giá",
+          },
+          video: {
+            required: "Vui lòng chọn id sản phẩm",
+          }
+        },
+        errorElement: 'span',
+        errorPlacement: function (error, element) {
+          error.addClass('invalid-feedback');
+          element.closest('.form-group').append(error);
+        },
+        highlight: function (element, errorClass, validClass) {
+          $(element).addClass('is-invalid');
+        },
+        unhighlight: function (element, errorClass, validClass) {
+          $(element).removeClass('is-invalid');
+        },
+        submitHandler: function(form, e){
+          e.preventDefault();
+          // var formData = new FormData(form);
+          // console.log(...formData)
+          const title=document.getElementById("title").value;
+          const typeVideo=document.getElementById("typeVideo").value;
+          const video=document.getElementById("video").value;
+          const img=document.getElementById("img").value;
+          var tags=document.querySelectorAll('input[name="tags"]:checked')
+          for(let i=0;i<tags.length;i++){
+            tagList.push(tags[i].value)
+          }
+          const data={
+            title:title,
+            typeVideo:typeVideo,
+            video:video,
+            img:img,
+            tagDetails  :tagList
+          }
+
+          console.log(JSON.stringify(data))
+          $.ajax({
+            url: "/api/videos/create",
+            type: "post",
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            data: JSON.stringify(data),
+            // processData: false,
+            // contentType: false,
+            success: function (p) {
+              // $('#modal-create').modal('hide');
+              // $('#create-video')[0].reset();
+              // renderDatas();
+              console.log(p)
+            },
+            error: function (data, textStatus, errorThrown) {
+              console.log('Error rồi:', data);
+            },
+          });
+        }
+      });
+
+    })
+    function showCreate(){
+      $.ajax({
+        url: "/api/videos/create",
+        type: 'GET',
+        success: function (data) {
+          console.log(data)
+            let checkbox = ``;
+            data.forEach(tag => {
+            checkbox += `
+                <input class="pl-2" type="checkbox" id="tag-${tag.id}" name="tags" value=${tag.id}>
+                <label for="tag-${tag.id}" style="margin-right: 10px"> ${tag.title}</label>
+                `;
+           })
+            $('#tag').html(checkbox);
+        },
+        errors: function (errors) {
+        }
+      });
+
+    }
+    function  renderDatas() {
+      $.ajax({
+        url: "/api/videos",
+        type: 'GET',
+        success: function (videos) {
+          // renderData(videos)
+        },
+        errors: function (errors) {
+        }
+      })
+    };
+
+    // function renderData(datas) {
+    //   console.log(datas)
+    //   let html = ``;
+    //   datas.forEach((v) => {
+    //     html += `
+    //     		<tr>
+	// 				<td >${v.title}</td>
+	// 				<td >${v.typeVideo}</td>
+	// 				<td >${v.typeVideo}</td>
+	// 				<td >${v.category.categoryName}</td>
+	// 				<td><a data-toggle="modal" onclick=showEdit(${p.id}) data-target="#modal-edit" class="btn btn-primary">Update</a>
+	// 					<a onclick=Delete(${p.id}) class="btn btn-danger">Delete</a></td>
+	// 			</tr>
+    //     	`
+    //   })
+    //   $("#tBodyProduct").html(html)
+    // }
+    function FindName(value) {
+      $.ajax({
+        url: "/api/videos/findtitle",
+        type: 'GET',
+        data: {
+          search: value
+        },
+        success: function (datas) {
+          // renderData(datas)
+          console.log(datas)
+        }
+      });
+    }
+  </script>
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link type="images/png" rel="icon" href="/images/icons8-youtube.png">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css" integrity="sha384-3B6NwesSXE7YJlcLI9RpRqGf2p/EgVH8BgoKTaUrmKNDkHPStTQ3EyoYjCGXaOTS" crossorigin="anonymous" />
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <title>Youtube </title>
+</head>
+<body>
+<header class="header">
+  <div class="header_container">
+    <div class="none"> </div>
+    <div class="search">
+      <input id="findTitleAndUsername" type="search" placeholder="Search" oninput="FindName(this.value)">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </div>
+    <div class="user">
+      <div class="icon">
+        <i class="fa-solid fa-video" data-toggle="modal" data-target="#modal-create"  onclick="showCreate()"></i>
+        <i class="fa-solid fa-grip"></i>
+        <i class="fa-solid fa-bell"></i>
+      </div>
+      <div class="img">
+        <img src="/images/logo.png" alt="">
+      </div>
+    </div>
+
+    <div class="toggle">
+      <i class="fa-solid fa-bars" id="header-toggle"></i>
+    </div>
+  </div>
+
+</header>
+<section class="nav" id="navbar">
+  <nav class="nav_container">
+    <div>
+      <a href="#" class="nav_link nav_logo ">
+        <i class="fa-solid fa-bars nav_icon"></i>
+        <span class="logo_name">
+               <i class="fab fa-youtube"></i>
+               Youtube
+             </span>
+      </a>
+
+      <div class="nav_list">
+        <div class="nav_items navtop">
+          <a href="#" class="nav_link navtop active">
+            <i class="fa fa-house nav_icon"></i>
+            <span class="nav_name">Home</span>
+          </a>
+          <a href="#" class="nav_link navtop">
+            <i class="fa fa-compass nav_icon"></i>
+            <span class="nav_name">Explore</span>
+          </a>
+          <a href="#" class="nav_link navtop">
+            <i class="fa-brands fa-tiktok nav_icon"></i>
+            <span class="nav_name">Short Video</span>
+          </a>
+          <a href="#" class="nav_link navtop">
+            <i class="fa-solid fa-users nav_icon"></i>
+            <span class="nav_name">Channel</span>
+          </a>
+          <a href="#" class="nav_link navtop">
+            <i class="fa-solid fa-video nav_icon"></i>
+            <span class="nav_name">Library</span>
+          </a>
+          <a href="#" class="nav_link navtop">
+            <i class="fa-solid fa-clock-rotate-left nav_icon"></i>
+            <span class="nav_name">History</span>
+          </a>
+          <a href="#" class="nav_link navtop">
+            <i class="fa-solid fa-thumbs-up nav_icon"></i>
+            <span class="nav_name">Like</span>
+          </a>
+
+          <div class="nav_dropdown">
+            <a href="#" class="nav_link">
+              <i class="fa-solid fa-chevron-down nav_icon"></i>
+              <span class="nav_name">Show More</span>
+            </a>
+
+            <div class="nav_dropdown-collapse">
+              <div class="nav_dropdown-content">
+                <a href="#" class="nav_dropdown-item">Grid Box</a>
+                <a href="#" class="nav_dropdown-item">Frontend Design</a>
+                <a href="#" class="nav_dropdown-item">Backend Design</a>
+              </div>
+            </div>
+          </div>
+
+          <a href="#" class="nav_link">
+            <i class="fa-solid fa-comment nav_icon"></i>
+            <span class="nav_name">Messages</span>
+          </a>
+        </div>
+
+        <div class="nav_items subscribe-container">
+          <h3 class="nav_subititle">SUBSCRIPTIONS</h3>
+
+          <a href="#" class="nav_link">
+            <img class="subscribe" src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-people-victoruler-flat-victoruler-5.png" alt="">
+            <span class="nav_name">GorkCoder</span>
+          </a>
+          <a href="#" class="nav_link">
+            <img class="subscribe" src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-occupation-and-people-victoruler-flat-victoruler.png">
+            <span class="nav_name">React Maste</span>
+          </a>
+          <a href="#" class="nav_link">
+            <img class="subscribe" src="https://img.icons8.com/external-victoruler-linear-colour-victoruler/64/000000/external-boy-children-avatar-victoruler-linear-colour-victoruler-2.png">
+            <span class="nav_name">Backend Development</span>
+          </a>
+          <a href="#" class="nav_link">
+            <img class="subscribe" src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-children-avatar-victoruler-flat-victoruler-12.png">
+            <span class="nav_name">Frontend Development</span>
+          </a>
+          <div class="nav_dropdown">
+            <a href="#" class="nav_link">
+              <i class="fa-solid fa-chevron-down nav_icon"></i>
+              <span class="nav_name">Show 3 More</span>
+            </a>
+
+            <div class="nav_dropdown-collapse nav_dropdown-second">
+              <div class="nav_dropdown-content">
+                <a href="#" class="nav_dropdown-items">
+                  <img class="subscribe" src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-children-avatar-victoruler-flat-victoruler-12.png">
+                  <span class="nav_name">Frontend Design</span>
+                </a>
+                <a href="#" class="nav_dropdown-items">
+                  <img class="subscribe" src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-children-avatar-victoruler-flat-victoruler-12.png">
+                  <span class="nav_name">Backend Design</span>
+                </a>
+                <a href="#" class="nav_dropdown-items">
+                  <img class="subscribe" src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-children-avatar-victoruler-flat-victoruler-12.png">
+                  <span class="nav_name">Backend Design</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</section>
+<!-- Modal create-->
+<div class="modal fade" id="modal-create" data-backdrop="static">
+  <div class="modal-dialog modal-xs">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Add Video</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="" id="create-video" >
+          <div class=" card-body">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="title">Title</label><span class="text-danger">*</span>
+                  <input type="text" name="title" id="title" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="typeVideo">TypeVideo</label><span class="text-danger">*</span>
+                  <input type="text" name="typeVideo" id="typeVideo" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="video">Video</label><span class="text-danger">*</span>
+                  <input type="text" name="video" id="video" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="img">Img</label><span class="text-danger">*</span>
+                  <input type="text" name="img" id="img" class="form-control">
+                </div>
+                <div class = "form-group" id="tag">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button class=" form-submit btn btn-primary">Add</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<script src="/js/main.js" charset="utf-8"></script>
+</body>
+  <script>
+    let tagList=[];
+    $(document).ready(function() {
+      // renderDatas();
+      //submit create và validate
+      $('#create-video').validate({
+        rules: {
+          title: {
+            required: true,
+          },
+          typeVideo: {
+            required: true,
+          },
+          video: {
+            required: true
+          }
+        },
+        messages: {
+          name: {
+            required: "Vui lòng nhập tên sản phẩm"
+          },
+          typeVideo: {
+            required: "Vui lòng nhập giá",
+          },
+          video: {
+            required: "Vui lòng chọn id sản phẩm",
+          }
+        },
+        errorElement: 'span',
+        errorPlacement: function (error, element) {
+          error.addClass('invalid-feedback');
+          element.closest('.form-group').append(error);
+        },
+        highlight: function (element, errorClass, validClass) {
+          $(element).addClass('is-invalid');
+        },
+        unhighlight: function (element, errorClass, validClass) {
+          $(element).removeClass('is-invalid');
+        },
+        submitHandler: function(form, e){
+          e.preventDefault();
+          // var formData = new FormData(form);
+          // console.log(...formData)
+          const title=document.getElementById("title").value;
+          const typeVideo=document.getElementById("typeVideo").value;
+          const video=document.getElementById("video").value;
+          const img=document.getElementById("img").value;
+          var tags=document.querySelectorAll('input[name="tags"]:checked')
+          for(let i=0;i<tags.length;i++){
+            tagList.push(tags[i].value)
+          }
+          const data={
+            title:title,
+            typeVideo:typeVideo,
+            video:video,
+            img:img,
+            tagDetails  :tagList
+          }
+
+          console.log(JSON.stringify(data))
+          $.ajax({
+            url: "/api/videos/create",
+            type: "post",
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            data: JSON.stringify(data),
+            // processData: false,
+            // contentType: false,
+            success: function (p) {
+              // $('#modal-create').modal('hide');
+              // $('#create-video')[0].reset();
+              // renderDatas();
+              console.log(p)
+            },
+            error: function (data, textStatus, errorThrown) {
+              console.log('Error rồi:', data);
+            },
+          });
+        }
+      });
+    })
+    function showCreate(){
+      $.ajax({
+        url: "/api/videos/create",
+        type: 'GET',
+        success: function (data) {
+          console.log(data)
+            let checkbox = ``;
+            data.forEach(tag => {
+            checkbox += `
+                <input class="pl-2" type="checkbox" id="tag-${tag.id}" name="tags" value=${tag.id}>
+                <label for="tag-${tag.id}" style="margin-right: 10px"> ${tag.title}</label>
+                `;
+           })
+            $('#tag').html(checkbox);
+        },
+        errors: function (errors) {
+        }
+      });
+
+    }
+    function  renderDatas() {
+      $.ajax({
+        url: "/api/videos",
+        type: 'GET',
+        success: function (videos) {
+          // renderData(videos)
+        },
+        errors: function (errors) {
+        }
+      })
+    };
+
+    // function renderData(datas) {
+    //   console.log(datas)
+    //   let html = ``;
+    //   datas.forEach((v) => {
+    //     html += `
+    //     		<tr>
+	// 				<td >${v.title}</td>
+	// 				<td >${v.typeVideo}</td>
+	// 				<td >${v.typeVideo}</td>
+	// 				<td >${v.category.categoryName}</td>
+	// 				<td><a data-toggle="modal" onclick=showEdit(${p.id}) data-target="#modal-edit" class="btn btn-primary">Update</a>
+	// 					<a onclick=Delete(${p.id}) class="btn btn-danger">Delete</a></td>
+	// 			</tr>
+    //     	`
+    //   })
+    //   $("#tBodyProduct").html(html)
+    // }
+    function FindName(value) {
+      $.ajax({
+        url: "/api/videos/findtitle",
+        type: 'GET',
+        data: {
+          search: value
+        },
+        success: function (datas) {
+          // renderData(datas)
+          console.log(datas)
+        }
+      });
+    }
+  </script>
+</html>

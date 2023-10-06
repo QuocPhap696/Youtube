@@ -1,0 +1,376 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="images/png" rel="icon" href="/images/icons8-youtube.png">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"
+          integrity="sha384-3B6NwesSXE7YJlcLI9RpRqGf2p/EgVH8BgoKTaUrmKNDkHPStTQ3EyoYjCGXaOTS" crossorigin="anonymous"/>
+
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Studio</title>
+
+</head>
+
+<body style="background-color: black">
+<!--    header      -->
+<header class="header">
+    <div class="header_container">
+        <div class="none"></div>
+        <div class="search">
+            <input type="text" placeholder="Search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+
+        <div class="user" >
+            <div class="icon" >
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-create" onclick="showCreate()">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         class="icon icon-tabler icon-tabler-video-plus"
+                         width="24" height="24" viewBox="0 0 24 24"
+                         stroke-width="2" stroke="currentColor" fill="none"
+                         stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M15 10l4.553 -2.276a1 1 0 0 1 1.447 .894v6.764a1 1 0 0 1 -1.447 .894l-4.553 -2.276v-4z" />
+                        <rect x="3" y="6" width="12" height="12" rx="2" /> <line x1="7" y1="12" x2="11" y2="12" />
+                        <line x1="9" y1="10" x2="9" y2="14" /> </svg> Tạo
+                </button>
+            </div>
+            <div class="img" style="margin-left: 20px;margin-right: 50px; display: flex;align-items: center">
+                <img src="/images/avatar/IMG_5047.jpg" alt="">
+                <h6 style="color: red; width: 100px; align-items: center;padding-top: 7px;margin-left: 7px">MyStudio</h6>
+            </div>
+        </div>
+        <div class="toggle">
+            <i class="fa-solid fa-bars" id="header-toggle"></i>
+        </div>
+    </div>
+</header>
+
+<section class="nav" id="navbar">
+    <nav class="nav_container">
+        <div>
+            <a href="#" class="nav_link nav_logo ">
+                <i class="fa-solid fa-bars nav_icon"></i>
+                <span class="logo_name">
+            <i class="fab fa-youtube"></i>
+            Studio
+          </span>
+            </a>
+
+            <div class="nav_list" style="margin-left: 15px">
+                <div class="nav_items navtop">
+                    <div class="img">
+                        <img id="image" src="" alt="">
+                    </div>
+                    <a href="#" class="nav_link navtop active">
+                        <span class="nav_name">Trang tổng quan</span>
+                    </a>
+                    <a href="#" class="nav_link navtop">
+                        <span class="nav_name">Nội dung</span>
+                    </a>
+                    <a href="#" class="nav_link navtop">
+                        <span class="nav_name">Bình luận</span>
+                    </a>
+                    <a href="#" class="nav_link navtop">
+                        <span class="nav_name">Library</span>
+                    </a>
+                    <a href="#" class="nav_link navtop">
+                        <span class="nav_name">History</span>
+                    </a>
+                    <a href="#" class="nav_link navtop">
+                        <span class="nav_name">Like</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</section>
+
+
+<main>
+    <section class="video_content">
+        <div id="video-container">
+
+        </div>
+    </section>
+</main>
+<div class="modal fade" id="modal-create" data-backdrop="static">
+    <div class="modal-dialog modal-xs">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add Video</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/api/videos/createVideo" id="create-video" enctype="multipart/form-data" method="post">
+                    <div class=" card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="title">Title</label><span class="text-danger">*</span>
+                                    <input type="text" name="title" id="title" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="description">Description</label><span class="text-danger">*</span>
+                                    <input type="text" name="description" id="description" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="video">Video</label><span class="text-danger">*</span>
+                                    <input type="file" name="video" id="video" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="img">Img</label><span class="text-danger">*</span>
+                                    <input type="file" name="img" id="img" class="form-control">
+                                </div>
+                                <div class="form-group" id="tag">
+                                    <!-- The tag checkboxes will be populated via AJAX -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <button class="form-submit btn btn-primary">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="avatar-upload-modal" data-backdrop="static">
+    <div class="modal-dialog modal-xs">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Upload New Avatar</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/api/users/uploadAvt" id="avatar-upload-form" enctype="multipart/form-data" method="post">
+                    <div class="form-group">
+                        <label for="img">Select a new avatar:</label>
+                        <input type="file" name="img" id="img" class="form-control">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="form-submit-avt btn btn-primary" id="upload-avatar-btn">Upload</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal edit-->
+<form method="post" onclick="editVideo()">
+    <div class="modal fade"  id="modal-edit" data-backdrop="static">
+        <div class="modal-dialog modal-xs">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit Video</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="" id="edit-video" >
+                        <div class=" card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="title">Title</label><span class="text-danger">*</span>
+                                        <input type="text" name="title" id="title" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Description">Description</label><span class="text-danger">*</span>
+                                        <input type="text" name="Description" id="Description" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                            <button class=" form-submit btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div></form>
+<script src="/js/main.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+    let videos = [];
+    let body = document.getElementById("body");
+
+    function renderAvt() {
+        $.ajax({
+            url: `http://localhost:8080/api/users/getUserLog`,
+            method: 'GET'
+        }).done(data => {
+            document.getElementById("image").src=data.avatar;
+            document.getElementById("image").addEventListener("click", function () {
+                $("#avatar-upload-modal").modal("show");
+        })
+        })
+        }
+
+
+renderAvt()
+
+    function showCreate() {
+        $.ajax({
+            url: "/api/videos/createVideo",
+            type: 'GET',
+            success: function (data) {
+                console.log(data)
+                let checkbox = ``;
+                data.forEach(tag => {
+                    checkbox += `
+                <input class="pl-2" type="checkbox" id="tag-${tag.id}" name="tagDetails" value=${tag.id}>
+                <label for="tag-${tag.id}" style="margin-right: 10px"> ${tag.title}</label>
+                `;
+                })
+                $('#tag').html(checkbox);
+            },
+            errors: function (errors) {
+            }
+        });
+    }
+    function submitForm() {
+        let form = document.getElementById("create-video");
+        let formData = new FormData(form);
+
+        $.ajax({
+            url: "/api/videos/createVideo",
+            type: "POST",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                console.log(response);            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        });
+    }
+
+    // Event listener for the Add button in the modal
+    $(".form-submit").on("click", function () {
+        submitForm();
+    });
+    //
+    // $("#upload-avatar-btn").on("click", function () {
+    //     let form = document.getElementById("avatar-upload-form");
+    //     let formData = new FormData(form);
+    //
+    //     $.ajax({
+    //         url: "/api/users/uploadAvt",
+    //         type: "POST",
+    //         data: formData,
+    //         contentType: false,
+    //         processData: false,
+    //         success: function (response) {
+    //
+    //             console.log(response);
+    //             $("#avatar-upload-modal").modal("hide");
+    //         },
+    //         error: function (xhr, status, error) {
+    //             console.error(error);
+    //             $("#avatar-upload-modal").modal("hide");
+    //         }
+    //     });
+    // });
+    function submitFormAvt() {
+        let form = document.getElementById("avatar-upload-form");
+        let formData = new FormData(form);
+
+        $.ajax({
+            url: "/api/users/uploadAvt",
+            type: "POST",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                console.log(response);            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        });
+    }
+    $(".form-submit-avt").on("click", function () {
+        submitFormAvt();
+    });
+    function showEditVideo(idVideo){
+        $("#modal-edit").modal("show");
+        $.ajax({
+            url: "http://localhost:8080/api/videos/edit",
+            type: 'GET',
+            data: {
+                id: idVideo
+            },
+            success: function (data) {
+                console.log(data.video)
+                $('#edit-id').val(data.video.id)
+                $('#edit-title').val(data.video.title)
+                $('#edit-description').val(data.video.description)
+
+            }
+        });
+    }
+
+    function renderVideoOfUserLog(){
+        $.ajax({
+            url: `http://localhost:8080/api/videos/getVideoOfUserLog`,
+            method: 'GET'
+        }).done(data => {
+            let str=""
+            data.forEach((video,index)=>{
+                str+=`<div class="video-items" style="padding-top: 50px;
+    width: 300px;">
+                            <div class="video-img">
+                            <a href="javascript:void(0)">
+                                <img src="${video.img}">
+                            </div>
+                            <div class="video-content">
+                                <div class="video-title" > ${video.title} </div>
+                                <p style="color: #ffffffb3"> <span>lượt view</span>   <span> 1 tháng trước</span></p>
+                                <div class="video-owner">
+                                        <img src="${video.img}">
+                                        <span style="color: #ffffffb3">${video.user.username}</span>
+                                </div>
+                                <span class="video-desc">${video.description}</span>
+                            </div>
+
+                      </div>
+                       <div >
+                                <button type="button" onclick="showEditVideo()" >EDIT</button>
+                                 <button>DELETE</button>
+
+                            </div>
+                            `
+            })
+            document.getElementById("video-container").innerHTML=str
+        })
+    }
+    renderVideoOfUserLog()
+</script>
+<script src="/js/main.js" charset="utf-8"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+
+</html>

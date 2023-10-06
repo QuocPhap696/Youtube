@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="/images/png" rel="icon" href="/images/icons8-youtube.png">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"
+          integrity="sha384-3B6NwesSXE7YJlcLI9RpRqGf2p/EgVH8BgoKTaUrmKNDkHPStTQ3EyoYjCGXaOTS" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/single.css">
+    <title>Youtube </title>
+    <style>
+        .i-active{
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+<!--    header      -->
+<header class="header">
+    <div class="header_container">
+        <div class="none"></div>
+        <div class="search">
+            <input type="text" placeholder="Search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <div class="user">
+            <div class="icon">
+                <i class="fa-solid fa-video"></i>
+                <i class="fa-solid fa-grip"></i>
+                <i class="fa-solid fa-bell"></i>
+            </div>
+            <div class="img">
+                <img src="/images/logo.png" alt="">
+            </div>
+        </div>
+        <div class="toggle">
+            <i class="fa-solid fa-bars" id="header-toggle"></i>
+        </div>
+    </div>
+</header>
+<!--    header      -->
+<!--    nav      -->
+<!--    nav      -->
+<section class="nav" id="navbar" style="padding-left: 25px;">
+    <nav class="nav_container">
+        <div>
+            <a href="/home" class="nav_link nav_logo ">
+                <i class="fa-solid fa-bars nav_icon"></i>
+                <span class="logo_name">
+               <i class="fab fa-youtube"></i>
+               Youtube
+             </span>
+            </a>
+
+            <div class="nav_list">
+                <div class="nav_items navtop">
+                    <a href="/home" class="nav_link navtop active">
+                        <i class="fa fa-house nav_icon"></i>
+                        <span class="nav_name">Home</span>
+                    </a>
+                    <a href="/topTrending" class="nav_link navtop">
+                        <i class="fa fa-compass nav_icon"></i>
+                        <span class="nav_name">Top Trending</span>
+                    </a>
+                    <a href="/createVideo" class="nav_link navtop" target="_blank">
+                        <i class="fa-solid fa-users nav_icon"></i>
+                        <span class="nav_name">Channel</span>
+                    </a>
+                    <a href="#" class="nav_link navtop">
+                        <i class="fa-solid fa-thumbs-up nav_icon"></i>
+                        <span onclick="renderVideoLiked()" class="nav_name">Like</span>
+                    </a>
+
+                    <div class="nav_dropdown">
+
+
+                        <div class="nav_dropdown-collapse">
+                            <div class="nav_dropdown-content">
+                                <a href="#" class="nav_dropdown-item">Grid Box</a>
+                                <a href="#" class="nav_dropdown-item">Frontend Design</a>
+                                <a href="#" class="nav_dropdown-item">Backend Design</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#" class="nav_link">
+                        <i class="fa-solid fa-comment nav_icon"></i>
+                        <span class="nav_name">Messages</span>
+                    </a>
+                </div>
+
+                <div class="nav_items subscribe-container">
+                    <h3 class="nav_subititle">SUBSCRIPTIONS</h3>
+
+                    <a href="#" class="nav_link">
+                        <img class="subscribe"
+                             src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-people-victoruler-flat-victoruler-5.png"
+                             alt="">
+                        <span class="nav_name">GorkCoder</span>
+                    </a>
+                    <a href="#" class="nav_link">
+                        <img class="subscribe"
+                             src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-occupation-and-people-victoruler-flat-victoruler.png"/>
+                        <span class="nav_name">React Maste</span>
+                    </a>
+                    <a href="#" class="nav_link">
+                        <img class="subscribe"
+                             src="https://img.icons8.com/external-victoruler-linear-colour-victoruler/64/000000/external-boy-children-avatar-victoruler-linear-colour-victoruler-2.png"/>
+                        <span class="nav_name">Backend Development</span>
+                    </a>
+                    <a href="#" class="nav_link">
+                        <img class="subscribe"
+                             src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-children-avatar-victoruler-flat-victoruler-12.png"/>
+                        <span class="nav_name">Frontend Development</span>
+                    </a>
+
+                    <div class="nav_dropdown">
+                        <a href="#" class="nav_link">
+                            <i class="fa-solid fa-chevron-down nav_icon"></i>
+                            <span class="nav_name">Show 3 More</span>
+                        </a>
+
+                        <div class="nav_dropdown-collapse nav_dropdown-second">
+                            <div class="nav_dropdown-content">
+                                <a href="#" class="nav_dropdown-items">
+                                    <img class="subscribe"
+                                         src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-children-avatar-victoruler-flat-victoruler-12.png"/>
+                                    <span class="nav_name">Frontend Design</span>
+                                </a>
+                                <a href="#" class="nav_dropdown-items">
+                                    <img class="subscribe"
+                                         src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-children-avatar-victoruler-flat-victoruler-12.png"/>
+                                    <span class="nav_name">Backend Design</span>
+                                </a>
+                                <a href="#" class="nav_dropdown-items">
+                                    <img class="subscribe"
+                                         src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-children-avatar-victoruler-flat-victoruler-12.png"/>
+                                    <span class="nav_name">Backend Design</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</section>
+<!--    nav      -->
+<!--    nav      -->
+<main class="single_pages">
+    <section class="video_items flex">
+        <div class="left">
+            <div class="left_content">
+                <video controls onplay="getView(`${video.id}`)" onpause="getDuration()">
+                    <source th:src="${video.video}" type="video/mp4" poster="${video.img}">
+                </video>
+                <div class="tag">
+                    <p th:text="${video.title}"></p>
+                </div>
+                <div class="view flex2 border_bottom">
+                    <div class="view-text">
+
+                        <span id="viewCount" th:text="${video.viewCount}+ ' '+ views +'   |   ' ">  </span>
+                        <span id="timeago" > </span>
+                    </div>
+                    <div class="flex">
+                        <div class="icon">
+                            <i id ="btn-LIKE" class="fa fa-thumbs-up" onclick='like("LIKE")'></i>
+                            <label id ="count-Like"></label>
+                        </div>
+                        <div class="icon">
+                            <i id="btn-DISLIKE" class="fa fa-thumbs-down" onclick='like("DISLIKE")'></i>
+                            <label id="count-DisLike"></label>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-share"></i>
+                            <label>SHARE</label>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-scissors"></i>
+                            <label>CLIP</label>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-bookmark"></i>
+                            <label>SAVE</label>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-ellipsis"></i>
+                        </div>
+                    </div>
+                </div>
+                <!--        total viwer            -->
+                <!--        video details            -->
+                <div class="details flex border_bottom">
+
+                        <div class="img">
+
+                            <img src="/images/logo.png" alt="">
+                        </div>
+                    <div class="heading"><a th:href="'/channelOtherUser?userId='+${video.user.id}">
+                        <h4 th:text="${video.user.username}"> <i class="fa fa-circle-check"></i></a></h4>
+                        <span>15M Subscribers</span>
+                        <h5 th:text="${video.description}"> </h5>
+                    </div>
+                </div>
+                <!--        video details            -->
+                <div class="comment-block">
+                    <!--        video comment            -->
+                    <div class="comment">
+                        <div class="comment-heading flex">
+                            <h4>120 Comments</h4>
+                            <h4><i class="fa fa-list-ul"></i> <label>SORT BY</label></h4>
+                        </div>
+                    </div>
+                    <!--        video comment  by self           -->
+                    <div class="details comment_self flex">
+                        <div class="img">
+                            <img src="/images/logo.png" alt="">
+                        </div>
+                        <div class="heading">
+                            <input type="text" placeholder="Add a comment...." id="add-comment" >
+                            <button class="addComment" type="button" onclick="addComment()">Comment</button>
+                        </div>
+                    </div>
+                    <!--        video comment  by other           -->
+                    <div class="details_Comment" id="list-comment">
+                    </div>
+                    <!--        video comment  by other           -->
+                    <button class="chat">Show Chat Replay</button>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <div class="right_content" id="body">
+                <div class="tags">
+                    <label class="tags-bg">All</label>
+                    <label class="tags-bg">Web Design</label>
+                    <label class="tags-bg">Frontend</label>
+                    <label class="tags-bg">Backend</label>
+                </div>
+                <div class="video_items vide_sidebar flex">
+
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<script src="/js/main.js" charset="utf-8"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script th:inline="javascript">
+    let video=[[${video}]]
+    console.log(video)
+    let videos=[];
+    let body=document.getElementById("body");
+    let status;
+    let title=document.getElementById("add-comment");
+    let listComment=[]
+    let listReply=[]
+    function render(){
+        document.getElementById("timeago").innerText =checkDifferenceTime(video.dateSubmit)
+        body.innerHTML="";
+        $.ajax({
+            url: `http://localhost:8080/api/videos`,
+            method: 'GET'
+        }).done(data => {
+            videos = data;
+            let str = "";
+            videos.forEach((video, index) => {
+                str += `
+            <div class="video_items vide_sidebar flex">
+                <a href="/singlePages/show?id=${video.id}">
+                    <img src="/${video.img}" alt="">
+                </a>
+                <div class="details">
+                    <p>${video.title}</p>
+                    <span>${video.user.username} <i class="fa fa-cricle-check"> </i> </span>
+                    <div>
+
+                    <span >${checkDifferenceTime(video.dateSubmit)} | </span>
+                    <span id="viewCount" >${video.viewCount} views </span>
+                    </div>
+                </div>
+            </div>`
+            })
+            body.innerHTML = str;
+        })
+        let data={
+            video:video,
+        }
+        $.ajax({
+            url: "http://localhost:8080/api/likes/getLike",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: 'POST',
+            data: JSON.stringify(data)
+        }).done(resp => {
+            if(resp.likeStatus){
+                console.log(resp)
+                status = resp.likeStatus.likeStatus;
+                if(status=='LIKE'){
+                    document.getElementById("btn-LIKE").classList.add("i-active");
+                }else {
+                    document.getElementById("btn-DISLIKE").classList.add("i-active")
+                }
+            }
+            document.getElementById("count-Like").innerText=resp.countLike;
+            document.getElementById("count-DisLike").innerText=resp.countDisLike;
+        })
+    }
+    render();
+    renderComment();
+    function like(like_status){
+        let data={
+            video:video,
+            likeStatus:like_status
+        }
+        $.ajax({
+            url: "http://localhost:8080/api/likes/create",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: 'POST',
+            data: JSON.stringify(data)
+        }).done(e => {
+            document.getElementById("count-Like").innerText=e.countLike;
+            document.getElementById("count-DisLike").innerText=e.countDisLike
+            if(like_status=="LIKE"){
+                if (status=="LIKE"){
+                    document.getElementById("btn-LIKE").classList.remove("i-active");
+                    status="";
+                } else {
+                    status="LIKE"
+                    document.getElementById("btn-LIKE").classList.add("i-active");
+                }
+                document.getElementById("btn-DISLIKE").classList.remove("i-active")
+            }else {
+                if (status=="DISLIKE"){
+                    status="";
+                    document.getElementById("btn-DISLIKE").classList.remove("i-active");
+                } else {
+                    status="DISLIKE"
+                    document.getElementById("btn-DISLIKE").classList.add("i-active");
+                }
+                document.getElementById("btn-LIKE").classList.remove("i-active");
+            }
+        })
+    }
+    function addComment (){
+        let data={
+            video:video,
+            title:title.value
+        }
+        console.log(title.value)
+        $.ajax({
+            url: "http://localhost:8080/api/comments",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: 'POST',
+            data: JSON.stringify(data)
+        }).done(e => {
+            renderComment()
+        })
+    }
+    function renderComment(){
+        $.ajax({
+            url: `http://localhost:8080/api/comments/getComment?id=${video.id}`,
+            method: 'GET'
+        }).done(data => {
+            listComment = data;
+            let str = "";
+            listComment.forEach((comment, index) => {
+                str += `
+               <div class="details flex">
+                            <div class="img">
+                                <img src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-people-victoruler-flat-victoruler-5.png"/>
+                            </div>
+                            <div class="heading">
+                                <h4>${comment.user.username} <span></span></h4>
+                                <p >${comment.title} </p>
+                                <div class="comment-like flex">
+                                    <div class="icon">
+                                        <label onclick="showInputReply(${comment.id})">REPLY</label>
+                                    </div>
+                                    <div class="icon">
+                                        <label onclick="showReply(${comment.id})">SHOW REPLY</label>
+                                    </div>
+                                </div>
+                                <div class="heading" id="${comment.id}" style="display: none">
+                            <input type="text" class="add-reply" placeholder="Add Reply...." id="reply${comment.id}" >
+                            <button type="button" class="reply-button"  onclick="addReply(${comment.id})">Add Reply</button>
+                        </div>
+                            </div>
+                        </div>
+                            <div class="replay mb-5" id="showReply${comment.id}">
+                            </div>`
+            })
+            document.getElementById("list-comment").innerHTML=str
+        })
+    }
+    function showInputReply(id){
+        document.getElementById(id).style.display="block"
+    }
+    function addReply(id) {
+        let replyTitle = document.getElementById("reply" + id)
+        let data = {
+            title: replyTitle.value
+        }
+        $.ajax({
+            url: "http://localhost:8080/api/comments/addReply?commentId=" + id,
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: 'POST',
+            data: JSON.stringify(data)
+        }).done(resp => {
+            alert("success")
+            showReply(id)
+        })
+    }
+    function showReply(id){
+        $.ajax({
+            url: `http://localhost:8080/api/comments/getReply?commentId=`+id,
+            method: 'GET'
+        }).done(data => {
+            listReply=data
+            let str = `
+                        <label class="tags" onclick="hideReply(${id})"> <i class="fa fa-caret-up"></i> Hide Reply </label>`;
+            listReply.forEach((reply, index) => {
+                str += `
+                        <div class="replay-details flex">
+                            <div class="img">
+                                <img src="/images/logo.png" alt="">
+                            </div>
+                            <div class="text">
+                                <h4><label>${reply.user.username}</label> <span>2 months ago</span></h4>
+                                <p>${reply.title}</p>
+                            </div>
+                        </div>
+                    `
+            })
+            document.getElementById("showReply"+id).innerHTML=str;
+        })
+    }
+    function hideReply(id){
+        document.getElementById("showReply"+id).innerHTML="";
+    }
+
+    // function updateViewCountOnServer(videoId, views) {
+    //     $.ajax({
+    //         url: 'http://localhost:8080/api/view',
+    //         method: 'POST',
+    //         data: { videoId: videoId, views: views },
+    //         success: function (data) {
+    //
+    //         },
+    //         error: function (err) {
+    //             console.log('Error:', err);
+    //         }
+    //     });
+    // }
+
+    var startDate;
+    var pauseDate = 0;
+    var timeOut;
+
+    function getView(idVideo) {
+        startDate = new Date();
+        timeOut = setTimeout(() => {
+
+            $.ajax({
+                url: 'http://localhost:8080/api/view?idVideo=' + idVideo,
+                method: 'GET',
+                success: function(data) {
+                    $('#viewCount').text(data.viewCount + " views");
+                    // updateViewCountOnServer(idVideo, data.views);
+                    pauseDate = 0;
+                },
+                error: function(err) {
+                    console.log('Error:', err);
+                }
+            });
+        }, (6 - pauseDate) * 1000);
+    }
+
+    function getDuration() {
+        clearTimeout(timeOut);
+        let diff = new Date() - startDate;
+        pauseDate = Math.floor(diff / 1000);
+    }
+    function countDownTime(sec) {
+        const rtf1 = new Intl.RelativeTimeFormat('vi', {style: 'short'});
+        let numAbs = Math.abs(sec);
+        if (numAbs < 60)
+            return rtf1.format(sec, 'second');
+        if (numAbs < 3600)
+            return rtf1.format(Math.floor(sec / 60) + 1, 'minute');
+        if (numAbs < 86400)
+            return rtf1.format(Math.floor(sec / 3600) + 1, 'hour');
+        if (numAbs < 604800)
+            return rtf1.format(Math.floor(sec / 86400) + 1, 'day');
+        if (numAbs < 2505600)
+            return rtf1.format(Math.floor(sec / 604800) + 1, 'week');
+        if (numAbs < 31536000)
+            return rtf1.format(Math.floor(sec / 2505600) + 1, 'month');
+        return rtf1.format(Math.floor(sec / 31536000) + 1, 'year');
+    }
+    function checkDifferenceTime(time) {
+        let timeComment = new Date(time);
+        let now = new Date();
+        let diff = (timeComment.getTime() - now.getTime()) / 1000;
+        return countDownTime(Math.floor(diff));
+    }
+</script>
+</body>
+</html>
+
+
+
+

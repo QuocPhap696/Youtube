@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="images/png" rel="icon" href="/assets/images/icons8-youtube.png">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css" integrity="sha384-3B6NwesSXE7YJlcLI9RpRqGf2p/EgVH8BgoKTaUrmKNDkHPStTQ3EyoYjCGXaOTS" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Youtube </title>
+    <style>
+
+        .tags{
+            background: #535353;
+            color: white;
+            border: none;
+            border-radius: 15px;
+            margin-right: 10px;
+            font-size: 15px;
+
+        }
+
+        .tags:hover {
+            background-color: #ff0000;
+            color: white;
+        }
+        .search{
+            background: #535353;
+            color: white;
+            border: none;
+            border-radius: 20px;
+        }
+
+
+        .imgAvatar{
+            width: 50px;
+            height: 50px;
+        }
+    #login{
+        position: relative;
+    }
+    .header{
+        height:65px !important;
+    }
+#scroll-container{
+    margin-top: 65px !important;
+}
+    .user-img img{
+        border-radius: 50%;
+        height: 50px;
+        width: 50px;
+    }
+    .user-action{
+        height: 109px;
+        top: 35px;
+        right: 0;
+        display: none;
+        position: absolute;
+        width: 130px;
+        background: #ccc;
+        cursor: pointer;
+    }
+        .user-action ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .user-action .user-name {
+            text-align: center;
+            padding: 8px;
+            background: #ec152f;
+        }
+        .user-action li {
+            padding: 4px 10px;
+        }
+        .user-action a {
+            text-decoration: none;
+            color: black;
+            display: inline-block;
+        }
+
+        #login:hover .user-action {
+            display: block;
+        }
+        .kenhcuatui:hover{
+            background-color: #726f6f;
+        }
+        .logout:hover{
+            background-color: #726f6f;
+        }
+        #videoLiked{
+            width: 1237px;
+            font-family: system-ui;
+            font-size: 20px;
+            border-radius: 20px;
+            /* border: rebeccapurple; */
+            text-align: center;
+            background: #d50202;
+            display: block;
+        }
+    </style>
+</head>
+
+<body style="background-color: #1c1c1c">
+<!--    header      -->
+<header class="header">
+    <div class="header_container">
+        <div class="none"> </div>
+        <div class="search">
+            <input  id="findTitleAndUsername" type="search" placeholder="Search" oninput="FindName(this.value)">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <div class="user">
+<!--            <div class="icon">-->
+                <i class="fa-solid fa-video" data-toggle="modal" data-target="#modal-create"  onclick="showCreate()"></i>
+                <i class="fa-solid fa-bell"></i>
+                <div id="login">
+                    <button>
+                        <a href="/login">Login</a>
+                    </button>
+
+<!--                </div>-->
+            </div>
+
+
+
+    </div>
+
+    </div>
+</header>
+<div id="scroll-container" class="style-scope ytd-feed-filter-chip-bar-renderer" style="touch-action: pan-y; color: white; margin: 10px; "; >
+    <!--        <button name="button" value="OK" type="button" onclick="">Âm Nhạc</button>-->
+</div>
+<h5 id="videoLiked" style="display: none"> VIDEO LIKED</h5>
+
+<!--    header      -->
+<!--    nav      -->
+<section class="nav" id="navbar" style="padding-left: 25px;">
+    <nav class="nav_container">
+        <div>
+            <a href="/home" class="nav_link nav_logo ">
+                <i class="fa-solid fa-bars nav_icon"></i>
+                <span class="logo_name">
+               <i class="fab fa-youtube"></i>
+               Youtube
+             </span>
+            </a>
+
+            <div class="nav_list">
+                <div class="nav_items navtop">
+                    <a href="/home" class="nav_link navtop active">
+                        <i class="fa fa-house nav_icon"></i>
+                        <span class="nav_name">Home</span>
+                    </a>
+                    <a href="/topTrending" class="nav_link navtop">
+                        <i class="fa fa-compass nav_icon"></i>
+                        <span class="nav_name">Top Trending</span>
+                    </a>
+                    <a href="/createVideo" class="nav_link navtop" target="_blank">
+                        <i class="fa-solid fa-users nav_icon"></i>
+                        <span class="nav_name">Channel</span>
+                    </a>
+                    <a href="#" class="nav_link navtop">
+                        <i class="fa-solid fa-thumbs-up nav_icon"></i>
+                        <span onclick="renderVideoLiked()" class="nav_name">Like</span>
+                    </a>
+
+                    <div class="nav_dropdown">
+
+
+                        <div class="nav_dropdown-collapse">
+                            <div class="nav_dropdown-content">
+                                <a href="#" class="nav_dropdown-item">Grid Box</a>
+                                <a href="#" class="nav_dropdown-item">Frontend Design</a>
+                                <a href="#" class="nav_dropdown-item">Backend Design</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#" class="nav_link">
+                        <i class="fa-solid fa-comment nav_icon"></i>
+                        <span class="nav_name">Messages</span>
+                    </a>
+                </div>
+
+                <div class="nav_items subscribe-container " id="list-sub">
+                    <h3 class="nav_subititle">SUBSCRIPTIONS</h3>
+
+                    <a href="#" class="nav_link">
+                        <img class="subscribe"
+                             src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-people-victoruler-flat-victoruler-5.png"
+                             alt="">
+                        <span class="nav_name">GorkCoder</span>
+                    </a>
+                    <a href="#" class="nav_link">
+                        <img class="subscribe"
+                             src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-occupation-and-people-victoruler-flat-victoruler.png"/>
+                        <span class="nav_name">React Maste</span>
+                    </a>
+                    <a href="#" class="nav_link">
+                        <img class="subscribe"
+                             src="https://img.icons8.com/external-victoruler-linear-colour-victoruler/64/000000/external-boy-children-avatar-victoruler-linear-colour-victoruler-2.png"/>
+                        <span class="nav_name">Backend Development</span>
+                    </a>
+                    <a href="#" class="nav_link">
+                        <img class="subscribe"
+                             src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-children-avatar-victoruler-flat-victoruler-12.png"/>
+                        <span class="nav_name">Frontend Development</span>
+                    </a>
+
+
+                    <div class="nav_dropdown">
+                        <a href="#" class="nav_link">
+                            <i class="fa-solid fa-chevron-down nav_icon"></i>
+                            <span class="nav_name">Show 3 More</span>
+                        </a>
+
+                        <div class="nav_dropdown-collapse nav_dropdown-second">
+                            <div class="nav_dropdown-content">
+                                <a href="#" class="nav_dropdown-items">
+                                    <img class="subscribe"
+                                         src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-children-avatar-victoruler-flat-victoruler-12.png"/>
+                                    <span class="nav_name">Frontend Design</span>
+                                </a>
+                                <a href="#" class="nav_dropdown-items">
+                                    <img class="subscribe"
+                                         src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-children-avatar-victoruler-flat-victoruler-12.png"/>
+                                    <span class="nav_name">Backend Design</span>
+                                </a>
+                                <a href="#" class="nav_dropdown-items">
+                                    <img class="subscribe"
+                                         src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-children-avatar-victoruler-flat-victoruler-12.png"/>
+                                    <span class="nav_name">Backend Design</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</section>
+<!--    nav      -->
+<!-- Modal create-->
+<div class="modal fade" id="modal-create" data-backdrop="static">
+    <div class="modal-dialog modal-xs">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add Video</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="" id="create-video" >
+                    <div class=" card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="title">Title</label><span class="text-danger">*</span>
+                                    <input type="text" name="title" id="title" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="typeVideo">TypeVideo</label><span class="text-danger">*</span>
+                                    <input type="text" name="typeVideo" id="typeVideo" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="video">Video</label><span class="text-danger">*</span>
+                                    <input type="text" name="video" id="video" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="img">Img</label><span class="text-danger">*</span>
+                                    <input type="text" name="img" id="img" class="form-control">
+                                </div>
+                                <div class = "form-group" id="tag">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <button class=" form-submit btn btn-primary">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<script src="/js/main.js" charset="utf-8"></script>
+<main>
+    <section class="video_content grid" id="body" >
+        <div class="video_items">
+            <a href="single-page.html">
+                <img src="/assets/images/video_images/back4.jpg" alt="">
+            </a>
+            <div class="details flex">
+                <div class="imgAvatar">
+                    <img src="https://img.icons8.com/external-victoruler-linear-colour-victoruler/64/000000/external-boy-children-avatar-victoruler-linear-colour-victoruler-2.png" />
+                </div>
+                <div class="heading">
+                    <p>How to make Hotel Booking Website With HTML CSS ......</p>
+                    <span>GorkCoder <i class="fa fa-circle-check"></i> </span>
+                    <span>56.7M .1 Week ago</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+<script src="/js/main.js" charset="utf-8" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script th:inline="javascript">
+    let videos=[];
+    let userLog=[[${userLogin}]]
+    let body=document.getElementById("body");
+    function renderTags(){
+        $.ajax({
+            url: `http://localhost:8080/api/videos/tags`,
+            method: 'GET'
+        }).done(data => {
+            let str = "";
+
+            data.forEach((tag) => {
+                str += `
+                 <button name="button" class="tags" value="OK" type="button" onclick="showVideoByTag(${tag.id})">${tag.title} </button>
+
+  `
+            })
+            document.getElementById('scroll-container').innerHTML = str;
+        })
+    }
+    renderTags()
+    function render(){
+        body.innerHTML="";
+        $.ajax({
+            url: `http://localhost:8080/api/videos`,
+            method: 'GET'
+        }).done(data => {
+            videos = data;
+            let str = "";
+            videos.forEach((video, index) => {
+                str += `
+                <div class="video_items">
+            <a href="/singlePages/show?id=${video.id}">
+                <img src="${video.img}" alt="">
+            </a>
+            <div class="details flex">
+            <a href="/channelOtherUser?userId=${video.user.id}">
+                <div class="img" style="overflow: hidden">
+                   <img src="${video.user.avatar}"  style=" width: 66px;
+                    height: 43px;" />
+                </div>
+            </a>
+               <div class="heading">
+                    <p>${video.title}</p>
+                    <span>${video.user.username} <i class="fa fa-circle-check"></i> </span>
+                     <div>
+
+                    <span >${checkDifferenceTime(video.dateSubmit)} | </span>
+                    <span id="viewCount" >${video.viewCount} views </span>
+                </div>
+                </div>
+            </div>
+        </div>`
+            })
+            body.innerHTML = str;
+        })
+    }
+
+    function showVideoByTag(value){
+        console.log(value)
+        $.ajax({
+            url: "/api/videos/tag/"+ value,
+            type: 'GET',
+            success: function (datas) {
+                let str = "";
+                datas.forEach((video) => {
+                    str += `
+              <div class="video_items">
+            <a href="/singlePages/show?id=${video.id}">
+                <img src="${video.img}" alt="">
+            </a>
+            <div class="details flex">
+            <a href="/channelOtherUser?userId=${video.user.id}">
+                <div class="img" style="overflow: hidden">
+                   <img src="${video.user.avatar}"  style=" width: 66px;
+                    height: 43px;" />
+                </div>
+            </a>
+               <div class="heading">
+                    <p>${video.title}</p>
+                    <span>${video.user.username} <i class="fa fa-circle-check"></i> </span>
+                     <div>
+
+                    <span >${checkDifferenceTime(video.dateSubmit)} | </span>
+                    <span id="viewCount" >${video.viewCount} views </span>
+                </div>
+                </div>
+            </div>
+        </div>`
+                })
+                body.innerHTML = str;
+            }
+        });
+    }
+    function FindName(value) {
+        $.ajax({
+            url: "/api/videos/findtitle",
+            type: 'GET',
+            data: {
+                search: value
+            },
+
+             success: function (datas) {
+                 let str = "";
+                 datas.forEach((video) => {
+                     str += `
+                <div class="video_items">
+            <a href="/singlePages/show?id=${video.id}">
+                <img src="${video.img}" alt="">
+            </a>
+            <div class="details flex">
+            <a href="/channelOtherUser?userId=${video.user.id}">
+                <div class="img" style="overflow: hidden">
+                   <img src="${video.user.avatar}"  style=" width: 66px;
+                    height: 43px;" />
+                </div>
+            </a>
+               <div class="heading">
+                    <p>${video.title}</p>
+                    <span>${video.user.username} <i class="fa fa-circle-check"></i> </span>
+                     <div>
+
+                    <span >${checkDifferenceTime(video.dateSubmit)} | </span>
+                    <span id="viewCount" >${video.viewCount} views </span>
+                </div>
+                </div>
+            </div>
+        </div>`
+                 })
+                 body.innerHTML = str;
+            },
+        });
+    }
+    function showCreate(){
+        $.ajax({
+            url: "/api/videos/create",
+            type: 'GET',
+            success: function (data) {
+                console.log(data)
+                let checkbox = ``;
+                data.forEach(tag => {
+                    checkbox += `
+                <input class="pl-2" type="checkbox" id="tag-${tag.id}" name="tags" value=${tag.id}>
+                <label for="tag-${tag.id}" style="margin-right: 10px"> ${tag.title}</label>
+                `;
+                })
+                $('#tag').html(checkbox);
+            },
+            errors: function (errors) {
+            }
+        });
+    }
+
+    function renderVideoLiked(){
+        document.getElementById("videoLiked").style.display="block"
+        body.innerHTML="";
+
+        $.ajax({
+            url: `http://localhost:8080/api/videos/getVideoLiked`,
+            method: 'GET'
+        }).done(data => {
+            videos = data;
+            let str = "";
+            videos.forEach((video, index) => {
+                str += `
+                <div class="video_items">
+            <a href="/singlePages/show?id=${video.id}">
+                <img src="${video.img}" alt="">
+            </a>
+            <div class="details flex">
+                <div class="img">
+                    <img src="https://img.icons8.com/external-victoruler-linear-colour-victoruler/64/000000/external-boy-children-avatar-victoruler-linear-colour-victoruler-2.png" />
+                </div>
+               <div class="heading">
+                    <p>${video.title}</p>
+                    <span>${video.user.username} <i class="fa fa-circle-check"></i> </span>
+                     <div>
+                    <span >${checkDifferenceTime(video.dateSubmit)} | </span>
+</div>
+                </div>
+            </div>
+        </div>`
+            })
+            body.innerHTML = str;
+        })
+    }
+    render();
+    renderUserSub()
+    function renderUserSub(){
+        let userSubList=[]
+        $.ajax({
+            url: `http://localhost:8080/api/subscribes/getListSub`,
+            method: 'GET'
+        }).done(data => {
+            userSubList=data
+            let str = " <h3 class=\"nav_subititle\">SUBSCRIPTIONS</h3>";
+            userSubList.forEach((userSub, index) => {
+                str += `
+                     <a href="/channelOtherUser?userId=${userSub.id}" class="nav_link">
+                        <img class="subscribe" src="${userSub.avatar}" alt="">
+                        <span class="nav_name">${userSub.username}</span>
+                    </a>
+                `
+            })
+            document.getElementById("list-sub").innerHTML=str
+        })
+    }
+    function login(){
+        if(userLog!=null){
+            html = `
+                        <div class="user-img">
+                        <img src="/assets/images/logo.png">
+                    </div>
+                    <div class="user-action">
+                        <div class="user-name"> ${userLog.username}</div>
+                        <ul>
+                            <li class="kenhcuatui">
+                                <a href="/studios"> MY CHANNEL</a>
+                            </li>
+                            <li class="logout">
+                                <a href="/logout"> LOG OUT</a>
+                            </li>
+                        </ul>
+                    </div>
+            `
+            document.getElementById('login').innerHTML=html
+        }
+    }
+ login()
+    function countDownTime(sec) {
+        const rtf1 = new Intl.RelativeTimeFormat('vi', {style: 'short'});
+        let numAbs = Math.abs(sec);
+        if (numAbs < 60)
+            return rtf1.format(sec, 'second');
+        if (numAbs < 3600)
+            return rtf1.format(Math.floor(sec / 60) + 1, 'minute');
+        if (numAbs < 86400)
+            return rtf1.format(Math.floor(sec / 3600) + 1, 'hour');
+        if (numAbs < 604800)
+            return rtf1.format(Math.floor(sec / 86400) + 1, 'day');
+        if (numAbs < 2505600)
+            return rtf1.format(Math.floor(sec / 604800) + 1, 'week');
+        if (numAbs < 31536000)
+            return rtf1.format(Math.floor(sec / 2505600) + 1, 'month');
+        return rtf1.format(Math.floor(sec / 31536000) + 1, 'year');
+    }
+    function checkDifferenceTime(time) {
+        let timeComment = new Date(time);
+        let now = new Date();
+        let diff = (timeComment.getTime() - now.getTime()) / 1000;
+        return countDownTime(Math.floor(diff));
+    }
+</script>
+
+</body>
